@@ -1,37 +1,34 @@
-# Erdős #142 — progression-free sets
+# Erdős #142 — Progression-Free Sets
 
-**Author:** Jared Wilder  
-**Status:** construction / barrier / finite-envelope research program; no claim that the full asymptotic problem is closed.
+**Jared Wilder**
 
-This repository is the canonical public home for the estate's #142 work on 3-term-progression-free sets. It consolidates the exact convex-level construction, carry-free mixed-radix transfer, architecture-specific barriers, dyadic reciprocal-sum implication, false-route bank, and finite `r_3` envelope/certificate work.
+Construction, barrier, and finite-envelope work on 3-term-progression-free sets.
 
-## Program scale
+The project combines exact convex-level constructions, carry-free mixed-radix transfer, architecture-specific optimization barriers, finite `r_3` computation, and a reciprocal-sum implication for progression-free sets.
 
-The audited campaign reconstructed **124 raw records across 53 rounds**. Its useful content is a structured package of exact mechanisms, negative theorems, finite data, and explicit obligations rather than a claimed solution of the asymptotic problem.
+## Main structural result
 
-## Main structural endpoint
+A strictly convex exact level is 3-AP-free. With a carry-free mixed-radix encoding (`B_i >= 2m_i - 1`), this yields an exact integer construction framework.
 
-A strictly convex exact level is 3-AP-free. Combined with a carry-free mixed-radix encoding (`B_i >= 2m_i-1`), this gives an exact integer construction framework.
-
-For the elementary monomial-level certificate
+For the monomial level
 
 \[
-F_p(x)=\sum_i x_i^p,
-\qquad p\in\mathbb Z,\ p\ge2,
+F_p(x)=\sum_i x_i^p,\qquad p\in\mathbb Z,\ p\ge2,
 \]
 
-with uniform digit cap and the crude value-range pigeonhole step, the resulting lower bound has leading natural-log loss
+using uniform digit caps and the direct value-range pigeonhole step, the resulting lower bound has leading natural-log loss
 
 \[
-|A|\ge
-N\exp\!\left(-(2\sqrt{p\log 2}+o(1))\sqrt{\log N}\right).
+|A|\ge N\exp\!\left(-(2\sqrt{p\log 2}+o(1))\sqrt{\log N}\right).
 \]
 
-Therefore **within this specific exact-level + value-range + carry-free certificate architecture**, `p=2` is optimal among integer `p>=2`. The same audit proves that positive anisotropic integer weights and nonuniform digit caps do not improve their corresponding coarse pigeonhole certificates, and that naive products of Behrend-type constructions do not improve the `sqrt(log N)` exponent shape.
+Within this certificate architecture, `p=2` is optimal among integers `p >= 2`. The same analysis shows that positive anisotropic integer weights, nonuniform digit caps, and naive products do not improve the corresponding coarse certificate at the `sqrt(log N)` scale.
 
-These are **architecture-specific barrier theorems**, not global impossibility theorems.
+These are route-specific optimization theorems: they identify what this construction architecture can and cannot deliver.
 
-The audit also contains the exact cross-problem implication
+## Reciprocal-sum implication
+
+The repository also records the exact implication
 
 \[
 \sum_{j\ge1}\frac{r_k(2^j)}{2^j}<\infty
@@ -39,21 +36,11 @@ The audit also contains the exact cross-problem implication
 \sum_{n\in A}\frac1n<\infty
 \]
 
-for every fixed `k` and every `k`-AP-free `A subset N`.
+for every fixed `k` and every `k`-AP-free set `A \subset \mathbb N`.
 
-## Current literature boundary
+## Repository map
 
-Classical Behrend uses a quadratic sphere / carry-free digit construction. Modern work by Elsholtz–Hunter–Proske–Sauermann improves Behrend's integer lower-bound constant using a different torus-lifting architecture. Accordingly, the `p=2` optimization above should be read only as a **death certificate for that elementary monomial/pigeonhole route**, not as a claim that Behrend's classical constant is globally optimal.
+- `structural/` — construction, transfer, and barrier theorems
+- `finite-envelope/` — finite `r_3` envelope and certificate work
 
-The source audit's finite target with area `rho > 7/24` is intentionally aligned with the modern torus-lifting direction. No improved block is claimed by this repository.
-
-Historical novelty of the estate's barrier refinements and transfer lemmas remains a separate literature question.
-
-## Source layout
-
-Exact public source bytes are migrated under:
-
-- `structural/` — theorem/construction/barrier package from `erdos-theorems/erdos142-ap-free/`;
-- `finite-envelope/` — the #142 finite envelope from `ck-gold-and-r3-envelope/erdos142-envelope/`.
-
-The structural and finite lanes are intentionally separate so finite computation is not promoted into an asymptotic theorem.
+The finite and asymptotic lanes are kept separate so their evidence can be inspected independently.
